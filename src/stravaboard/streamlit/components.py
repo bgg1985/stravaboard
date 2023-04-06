@@ -19,7 +19,7 @@ class Summary(StravaboardComponent):
 
         st.write(
             "In total, you've cycled ",
-            str(round(activities["distance_mi"].sum(), 2)),
+            str(round(activities["distance_km"].sum(), 2)),
             "km over ",
             str(round(activities["elapsed_min"].sum() / 60, 2)),
             " hours 🥳",
@@ -40,7 +40,7 @@ class Summary(StravaboardComponent):
         total_across_df = activities.loc[
             activities["date"] > (latest_date - date_delta)
         ]
-        total_km = round(total_across_df["distance_mi"].sum(), 2)
+        total_km = round(total_across_df["distance_km"].sum(), 2)
         total_hours = round(total_across_df["elapsed_min"].sum() / 60, 2)
 
         st.write(str(total_km), "km and ", str(total_hours), " hours 💪")
@@ -53,21 +53,21 @@ class SpeedBreakdown(StravaboardComponent):
 
         threshold = st.slider(
             "Short/long ride threshold (km)",
-            activities["distance_mi"].min(),
-            activities["distance_mi"].max(),
+            activities["distance_km"].min(),
+            activities["distance_km"].max(),
             3.0,
         )
 
         self._plot_speed_breakdown(
             activities.loc[
-                activities["distance_mi"] < threshold,
+                activities["distance_km"] < threshold,
             ],
             title=f"rides shorter than {threshold}km",
         )
 
         self._plot_speed_breakdown(
             activities.loc[
-                activities["distance_mi"] >= threshold,
+                activities["distance_km"] >= threshold,
             ],
             title=f"Rides longer than {threshold}km",
         )
@@ -79,20 +79,20 @@ class SpeedBreakdown(StravaboardComponent):
             activities,
             x="date",
             y="speed_mins_per_km",
-            color="distance_mi",
+            color="distance_km",
             color_continuous_scale=["white", "yellow", "red"],
             trendline="rolling",
             trendline_options=dict(window=5),
             labels={
                 "date": "Date of ride",
-                "distance_mi": "Distance (km)",
+                "distance_km": "Distance (km)",
                 "speed_mins_per_km": "Pace (min/km)",
                 "elapsed_min": "Elapsed time (mins)",
                 "total_elevation_gain": "Total elevation gain (m)",
             },
             hover_data=[
                 "date",
-                "distance_mi",
+                "distance_km",
                 "speed_mins_per_km",
                 "elapsed_min",
                 "total_elevation_gain",
@@ -117,7 +117,7 @@ class Mileage(StravaboardComponent):
         freq_grouper_key = {"month": "M", "week": "W"}
         dis_by_freq = (
             activities.groupby(pd.Grouper(key="date", freq=freq_grouper_key[freq]))
-            .agg({"distance_mi": sum})
+            .agg({"distance_km": sum})
             .reset_index()
         )
 
@@ -126,10 +126,10 @@ class Mileage(StravaboardComponent):
         fig = px.bar(
             dis_by_freq,
             x="tidy_date",
-            y="distance_mi",
+            y="distance_km",
             labels={
                 "tidy_date": freq.title(),
-                "distance_mi": "Total distance (km)",
+                "distance_km": "Total distance (km)",
             },
             width=800,
             height=600,
