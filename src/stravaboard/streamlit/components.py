@@ -140,11 +140,10 @@ class Mileage(StravaboardComponent):
         st.plotly_chart(fig, use_container_width=False)
 
 class Datatable(StravaboardComponent):
-    @staticmethod
     def display(activities: pd.DataFrame) -> None:
 
         st.write("Here's our first attempt at using data to create a table:")
-        st.write(pd.DataFrame({
+        st.write(activities({
             'first column': [1, 2, 3, 4],
             'second column': [10, 20, 30, 40]
         }))
