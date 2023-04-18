@@ -138,3 +138,9 @@ class Mileage(StravaboardComponent):
         fig.update_xaxes(tickangle=-45, showticklabels=True, type="category")
 
         st.plotly_chart(fig, use_container_width=False)
+
+class Datatable(StravaboardComponent):
+    @staticmethod
+    def display(activities: pd.DataFrame) -> None:
+
+        st.dataframe(activities)
