@@ -80,7 +80,7 @@ class SpeedBreakdown(StravaboardComponent):
             x="date",
             y="speed_mins_per_km",
             color="distance_km",
-            color_continuous_scale=["white", "yellow", "red"],
+            color_continuous_scale=["blue", "green", "red"],
             trendline="rolling",
             trendline_options=dict(window=5),
             labels={
