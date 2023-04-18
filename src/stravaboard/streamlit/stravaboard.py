@@ -28,7 +28,7 @@ class Stravaboard:
             objects have a display() method that displays streamlit
             component(s).
         """
-        st.title("Stravaboard 🏃‍♂️🏃‍♀️")
+        st.title("BGG1985's Stravaboard 🚴‍♀️💨")
 
         for component in components:
 
