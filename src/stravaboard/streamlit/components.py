@@ -51,11 +51,11 @@ class SpeedBreakdown(StravaboardComponent):
 
         st.header("The speed breakdown")
 
-        threshold = st.slider(
+        threshold = st.number_input(
             "Short/long ride threshold (km)",
             activities["distance_km"].min(),
             activities["distance_km"].max(),
-            3.0,
+            8.0,
         )
 
         self._plot_speed_breakdown(
