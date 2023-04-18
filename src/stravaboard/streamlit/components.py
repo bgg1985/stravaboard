@@ -142,8 +142,4 @@ class Mileage(StravaboardComponent):
 class Datatable(StravaboardComponent):
     def display(activities: pd.DataFrame) -> None:
 
-        st.write("Here's our first attempt at using data to create a table:")
-        st.write(activities({
-            'first column': [1, 2, 3, 4],
-            'second column': [10, 20, 30, 40]
-        }))
+        st.table(activities)
