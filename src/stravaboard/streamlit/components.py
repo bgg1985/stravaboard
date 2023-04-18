@@ -140,10 +140,6 @@ class Mileage(StravaboardComponent):
         st.plotly_chart(fig, use_container_width=False)
 
 
-"""st.dataframe("activities")
-
-st.dataframe(self.data)"""
-
 st.write("Here's our first attempt at using data to create a table:")
 st.write(pd.DataFrame({
     'first column': [1, 2, 3, 4],

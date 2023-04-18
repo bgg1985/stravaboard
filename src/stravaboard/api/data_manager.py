@@ -62,4 +62,3 @@ class ActivitiesManager(DataManager):
         )
 
         self.data = activities
-        activities = "activities"
