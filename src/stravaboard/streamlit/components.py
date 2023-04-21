@@ -111,7 +111,7 @@ class Mileage(StravaboardComponent):
     @staticmethod
     def display(activities: pd.DataFrame) -> None:
 
-        st.header("The mileage")
+        st.header("The TEST mileage")
 
         freq = st.radio("Display mileage grouped by:", ("week", "month"))
         freq_grouper_key = {"month": "M", "week": "W"}
@@ -142,5 +142,5 @@ class Mileage(StravaboardComponent):
 class test(StravaboardComponent):
     @staticmethod
     def display(activities: pd.DataFrame) -> None:
-        
+
         st.header("Test Component")
