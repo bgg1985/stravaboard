@@ -141,4 +141,6 @@ class Mileage(StravaboardComponent):
 
 class test(StravaboardComponent):
     @staticmethod
+    def display(activities: pd.DataFrame) -> None:
+        
         st.header("Test Component")
