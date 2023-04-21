@@ -3,7 +3,7 @@ import os
 import streamlit as st
 from dotenv import load_dotenv
 
-from stravaboard.streamlit.components import Mileage, SpeedBreakdown, Summary
+from stravaboard.streamlit.components import Mileage, SpeedBreakdown, Summary, TestCode
 from stravaboard.streamlit.stravaboard import Stravaboard
 
 # load strava credentials from .env
@@ -17,4 +17,4 @@ sb = Stravaboard(
     client_secret=os.environ.get("STRAVA_CLIENT_SECRET"),
     refresh_token=os.environ.get("STRAVA_REFRESH_TOKEN"),
 )
-sb.display(components=[Summary, SpeedBreakdown, Mileage])
+sb.display(components=[Summary, SpeedBreakdown, Mileage, TestCode])

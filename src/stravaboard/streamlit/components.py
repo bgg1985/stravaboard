@@ -139,7 +139,7 @@ class Mileage(StravaboardComponent):
 
         st.plotly_chart(fig, use_container_width=False)
 
-class test(StravaboardComponent):
+class TestCode(StravaboardComponent):
     @staticmethod
     def display(activities: pd.DataFrame) -> None:
 
